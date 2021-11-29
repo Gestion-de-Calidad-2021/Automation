@@ -4,10 +4,6 @@ require 'capybara/dsl'
 require 'capybara/cucumber'
 require 'capybara-screenshot/cucumber'
 
-#PTravel Settings
-ENV['USER']="Pepazo"
-ENV['PSW']="ILoveQA"
-
 #Users and Passwords of Americas Start Together
 ENV['VOLUNTARIO_USER']="voluntario@gmail.com"
 ENV['LIDER_USER']="lider@gmail.com"
