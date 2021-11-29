@@ -16,6 +16,12 @@ ENV['LIDER_USER']="lider@gmail.com"
 ENV['CORETEAM_USER']="coreteam@gmail.com"
 ENV['PSW']="123456"
 
+#Users and Passwords of Americas Start Together
+ENV['VOLUNTARIO_USER']="voluntario@gmail.com"
+ENV['LIDER_USER']="lider@gmail.com"
+ENV['CORETEAM_USER']="coreteam@gmail.com"
+ENV['PSW']="123456"
+
 Capybara.default_driver = :selenium
 
 # Set the host the Capybara tests should be run against
