@@ -4,9 +4,11 @@ require 'capybara/dsl'
 require 'capybara/cucumber'
 require 'capybara-screenshot/cucumber'
 
-#PTravel Settings
-ENV['USER']="Pepazo"
-ENV['PSW']="ILoveQA"
+#Users and Passwords of Americas Start Together
+ENV['VOLUNTARIO_USER']="voluntario@gmail.com"
+ENV['LIDER_USER']="lider@gmail.com"
+ENV['CORETEAM_USER']="coreteam@gmail.com"
+ENV['PSW']="123456"
 
 #Users and Passwords of Americas Start Together
 ENV['VOLUNTARIO_USER']="voluntario@gmail.com"
@@ -22,7 +24,7 @@ Capybara.app_host = ENV["CAPYBARA_HOST"]
 # Set the time (in seconds) Capybara should wait for elements to appear on the page
 Capybara.default_max_wait_time = 15
 Capybara.default_driver = :selenium
-Capybara.app_host = "http://www.google.com"
+Capybara.app_host = "https://testing-start.web.app/"
 
 class CapybaraDriverRegistrar
   # register a Selenium driver for the given browser to run on the localhost
