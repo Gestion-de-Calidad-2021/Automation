@@ -1,15 +1,19 @@
 
 Feature: Start Americas main Page
-   As voluntario user
+   As a regular user
    I want to login in the Website
-   so I can access to the page with  voluntario privileges
+   so I can participate and see the evenTs and proyects
 
-Scenario Outline: Login to the page with voluntario privileges        
-    Given I am on the main homepage
-    When I press the login button
-    And I enter required fields as shown below
-	    |Correo electronico: | voluntario@gmail.com |
-        |Contraseña: 	     | 123456              |
+Scenario Outline: Login to the page 
+    Given I am on the main homepage of StartAmericas website
+    When I press the login button ubicate at the right corner
+    And I enter as "<typeOfUser>"
+    And I enter the password
     And I click the "Iniciar Sesion" button
-	Then I should enter at the main page with the voluntario privileges
+	Then I should enter at the main page and see the proyects and events
+
+Examples:
+|typeOfUser|    
+|voluntario|
+|lider     | 
 

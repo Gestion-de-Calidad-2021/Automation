@@ -1,43 +1,54 @@
-#You can implement step definitions for undefined steps with these snippets:
+Given('I am on the main homepage of Start Amercias Together Website') do
+    visit 'https://testing-start.web.app/'    
+end
 
+When('I press the login  button ubicated at the right corner') do
+    buttonLogin_xpath='//*[@id="root"]/header/div[1]/button'
+    find(:xpath, buttonLogin_xpath).click
+end
 
+When('I press the crear cuenta nueva button') do
+    buttonCrear_xpath='/html/body/div/div/div[2]/div/form/div[3]/button[2]/span[1]'
+    find(:xpath, buttonCrear_xpath).click
+    sleep(1)
+end
+When('I enter the required fields as show below to') do |table|
+    data = table.rows_hash
+    data.each_pair do |key, value|
+      print(key)
+      case key
+      when "Correo electronico:"
+        fill_in 'email' , :with => value
+        
+      when "Nombre:"
+        fill_in 'username' , :with => value
+        
+      when "Apellido:"
+        fill_in 'lastname' , :with => value
+        
+      when "Numero de telefono:"
+        fill_in 'phone' , :with => value
+        
+      when "Contraseña:"
+        fill_in 'password' , :with => value
+        
+      when "Confirma tu Contraseña:"
+        fill_in 'confirmPassword' , :with => value        
+      end  
+    end
+    sleep(2)
+end
+When('press Crear Cuenta start') do
+    buttonCrear_xpath='/html/body/div/div/div/div[2]/div[2]/form/div[6]/button/span[1]'
+    find(:xpath, buttonCrear_xpath).click   
+    sleep (2)
+end
 
-# Given(/^the voluntario user is logged with the email and password on Start Americas Together homepage$/) do 
-#     visit 'https://testing-start.web.app/'
-#     buttonLogin_xpath='//*[@id="root"]/header/div[1]/button'
-#     find(:xpath, buttonLogin_xpath).click
-#     fill_in 'email', :with => ENV['VOLUNTARIO_USER']
-#     fill_in 'password', :with => ENV['PSW']
-#     buttonIniciarSesion_xpath='//*[@id="root"]/div/div[2]/div/form/div[3]/button[1]'
-#     find(:xpath, buttonIniciarSesion_xpath).click
-#     sleep 5
-#   end
-  
-#   When(/^the voluntario user click on "([^"]*)" option$/) do |perfilButton|
-#     buttonPerfil_xpath='//*[@id="root"]/header/div[2]/div/button[4]'
-#     find(:xpath, buttonPerfil_xpath).click
-#   end
-  
-#   When(/^click on EDITAR PERFIL$/) do
-#     buttonEditarPerfil_xpath='//*[@id="simple-tabpanel-0"]/div/span/div/div[1]/div[2]/div/div[2]/button[1]'
-#     find(:xpath, buttonEditarPerfil_xpath).click
-#   end
-  
-#   When(/^the voluntario user will update his name to Juan$/) do 
-#     fill_in 'Nombre', :with => 'Juan'
-#   end
-
-#   When(/^click on GUARDAR$/) do
-#     buttonGuardar_xpath='/html/body/div[2]/div[3]/div[2]/button[1]'
-#     find(:xpath, buttonGuardar_xpath).click
-#   end
-  
-#   Then(/^the voluntario user can see his name updated on the Perfil information with "([^"]*)"$/) do |name|
-#     userName = find(:xpath,'//*[@id="simple-tabpanel-0"]/div/span/div/div[1]/div[2]/div/div[1]/div/p[1]').text
-#     textName = "Nombre: "+name  
-#     if (userName != textName)
-#         raise "Validation for user name: Failed"    
-#         puts "Expected: "+textName
-#         puts "Actual:"+userName
-#     end
-#   end
+Then('the user will be created and can login with the next credentials') do |table|
+    data = table.rows_hash
+    buttonLogin_xpath='//*[@id="root"]/header/div[1]/button'
+    find(:xpath, buttonLogin_xpath).click
+    fill_in 'email', :with => data['Correo electronico:']
+    fill_in 'password', :with => data['Contraseña:']
+    sleep (2)
+end
