@@ -6,8 +6,8 @@ Given(/^the "([^"]*)" Juan is logged with the email and password on Start Americ
     visit 'https://testing-start.web.app/'
     buttonLogin_xpath='//*[@id="root"]/header/div[1]/button'
     find(:xpath, buttonLogin_xpath).click
-
-    if(typeOfUser== "voluntario user")
+    
+    if(typeOfUser== "voluntario")
         fill_in 'email', :with => ENV['VOLUNTARIO_USER']
     elsif(typeOfUser== "lider user")
         fill_in 'email', :with => ENV['LIDER_USER']
