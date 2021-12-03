@@ -5,7 +5,7 @@ Feature: Start Americas Archive the EVENTS
    so I can order the events.
 
 @maximize
-Scenario Outline: Archive the 4 EVENT
+Scenario Outline: Archive the fourth EVENT
 	Given I am on the main homepage of Start Americas Together Website.
 	When I press the sections of "Eventos".
     And I press the button of "Archivar" of the fourth event
