@@ -78,65 +78,29 @@ When(/^the "([^"]*)" Jose click on EDITAR PERFIL$/) do |typeOfUser|
   find(:xpath, buttonEditarPerfil_xpath).click
 end
 
-When(/^the "([^"]*)" Jose will update his name to Pedro$/) do |user|
+When(/^I enter required fields as shown below for Jose user$/) do |table|
   fill_in "nombre", with: ""
-  fill_in 'Nombre', :with => 'Pedro'
-end
-
-When(/^the "([^"]*)" Jose will update his lastname to Lopez$/) do |user|
-  fill_in 'Apellido', :with => 'Lopez'
-end
-
-When(/^the "([^"]*)" Jose will update his birthday date to "([^"]*)"$/) do |user, date|
-  fill_in "fecha_de_nacimiento", with: "10/05/1998"
-end
-
-When(/^the "([^"]*)" Jose will update his ocupation to Universidad$/) do |user|
-  select "Universidad", :from => "ocupacion"
-end
-
-When(/^the "([^"]*)" Jose will update his profession to Estudiante$/) do |user|
-  fill_in 'Profecion u Oficio', :with => 'Estudiante'
-end
-
-When(/^the "([^"]*)" Jose will update his interests to Educacion$/) do |user|
+  data = table.rows_hash
+  fill_in 'nombre', :with => data["name:"]
+  fill_in 'Apellido', :with => data["lastname:"]
+  fill_in "fecha_de_nacimiento", with: data["birthday:"]
+  select data["ocupation:"], :from => "ocupacion"
+  fill_in 'Profecion u Oficio', :with => data["profession:"]
+  all('input[type=checkbox]').each do |checkbox|
+    if checkbox.checked? then 
+     checkbox.click
+    end
+  end
   find(:css, "#educacionCheck[value='Educacion']").set(true) #check true , uncheck false
-end
-
-When(/^the "([^"]*)" Jose will update his qualities to Organizacion$/) do |user|
   find(:css, "#organizacion-check[value='Organizacion']").set(true) #check true , uncheck false
-end
-
-When(/^the "([^"]*)" Jose will update his country of residence to Colombia$/) do |user|
-  fill_in 'Pais de recidencia', :with => 'Colombia'
-end
-
-When(/^the "([^"]*)" Jose will update his city of residence to Bogotá$/) do |user|
-  fill_in 'Ciudad de recidencia', :with => 'Bogotá'
-end
-
-When(/^the "([^"]*)" Jose will update his phone number to "([^"]*)"$/) do |user, phone|
-  fill_in 'telefono', :with => phone
-end
-
-When(/^the "([^"]*)" Jose will update his genre to Masculino$/) do |user|
-  select "Masculino", :from => "genero"
-end
-
-When(/^the "([^"]*)" Jose will update his name of contact emergency to Pepe$/) do |user|
-  fill_in 'Nombre de contacto de emergencia', :with => 'Pepe'
-end
-
-When(/^the "([^"]*)" Jose will update his relationship to emergency contact to amigo$/) do |user|
-  fill_in 'Relación de contacto de emergencia', :with => 'amigo'
-end
-
-When(/^the "([^"]*)" Jose will update his number of emergency contact to "([^"]*)"$/) do |user, number|
-  fill_in 'Número de contacto de emergencia', :with => number
-end
-
-When(/^the "([^"]*)" Jose will update his description of the profile to  "([^"]*)"$/) do |user, description|
-  fill_in 'descripcion_personal', :with => description
+  fill_in 'Pais de recidencia', :with => data["country of residence:"]
+  fill_in 'Ciudad de recidencia', :with =>  data["city of residence:"]
+  fill_in 'telefono', :with => data["phone number:"]
+  select data["genre:"], :from => "genero"
+  fill_in 'Nombre de contacto de emergencia', :with => data["name of contact emergency:"] 
+  fill_in 'Relación de contacto de emergencia', :with => data["relationship to emergency contact:"]
+  fill_in 'Número de contacto de emergencia', :with => data["number of emergency contact:"]
+  fill_in 'descripcion_personal', :with => data["description:"]
 end
 
 When(/^the "([^"]*)" Jose click on GUARDAR$/) do |user|
@@ -174,8 +138,8 @@ When(/^the "([^"]*)" Jose can see his name, lastname, birthday date, ocupation, 
   ocupacionXPATH = find(:xpath,'//*[@id="simple-tabpanel-0"]/div/span/div/div[1]/div[2]/div/div[1]/div/p[4]').text
   puts "OCUPACION Actual: "+ocupacionXPATH
 
-  textGenre = "Ocupación: "+ocupation
-  puts "OCUPACION Expected: "+textGenre
+  textOcupation = "Ocupación: "+ocupation
+  puts "OCUPACION Expected: "+textOcupation
 
   carrerXPATH = find(:xpath,'//*[@id="simple-tabpanel-0"]/div/span/div/div[1]/div[2]/div/div[1]/div/p[5]').text
   puts "CARRERA Actual: "+carrerXPATH
@@ -231,18 +195,122 @@ When(/^the "([^"]*)" Jose can see his name, lastname, birthday date, ocupation, 
   textQualities = qualities
   puts "NOMBRE CONTACTO DE EMERGENCIA  Expected: "+textQualities
 
+  descriptionPATH = find(:xpath,'//*[@id="simple-tabpanel-0"]/div/span/div/div[1]/div[1]/div[2]/div').text
+  puts descriptionPATH
+
+  descriptionArray = descriptionPATH.split(/\n/)
+  descriptionXPATH =descriptionArray.last
+  puts descriptionXPATH
+
+  textdescription = description
+  puts "NOMBRE CONTACTO DE EMERGENCIA  Expected: "+textdescription
+
   sleep 2
-  if ((userName != textName) && (edad!=ageCalculate) && (ocupacionXPATH!=textGenre) && (carrerXPATH!=textProfession) && (phoneXPATH!=textPhoneNumber) && (cityOfResidenceXPATH!=textCityOfResidence) && (countryOfResidenceXPATH!=textCountryOfResidence)&& (emergencyContactNamePATH!=textEmergencyContactName)&& (relationshipToEmergencyContactPATH!=textRelationshipToEmergencyContact)&& (emergencyContactNumberPATH!=textEmergencyContactNumber)&& (interestsPATH!=textInterests)&& (qualitiesPATH!=textQualities))
+  if (userName != textName) 
       raise "Validation for user name: Failed"    
       puts "Expected: "
       puts "NAME Expected: "+textName
-      puts "EDAD Expected: "+ageCalculate
-      puts "OCUPACION Expected: "+textGenre
-
 
       puts "Actual:"
       puts "NAME Actual: "+userName
-      puts "EDAD Actual: "+age
+  end
+  if (age != ageCalculate) 
+      raise "Validation for user age: Failed"    
+      puts "Expected: "
+      puts "EDAD Expected: "+ageCalculate
+
+      puts "Actual:"
+      puts "NAME Actual: "+age
+  end
+  if (ocupacionXPATH != textOcupation) 
+      raise "Validation for user ocupation: Failed"    
+      puts "Expected: "
+      puts "OCUPACION Expected: "+textOcupation
+
+      puts "Actual:"
       puts "OCUPACION Actual: "+ocupacionXPATH
+  end
+  if ((carrerXPATH != textProfession) && (phoneXPATH != textPhoneNumber) && (cityOfResidenceXPATH != textCityOfResidence) && (countryOfResidenceXPATH != textCountryOfResidence) && (emergencyContactNamePATH != textEmergencyContactName) && (relationshipToEmergencyContactPATH != textRelationshipToEmergencyContact) && (emergencyContactNumberPATH != textEmergencyContactNumber) && (interestsPATH != textInterests) && (qualitiesPATH != textQualities))
+      raise "Validation for user carrer: Failed"    
+      puts "Expected: "
+      puts "CARRERA Expected: "+textProfession
+
+      puts "Actual:"
+      puts "CARRERA Actual: "+carrerXPATH
+  end
+  if (phoneXPATH != textPhoneNumber) 
+      raise "Validation for user number of phone: Failed"    
+      puts "Expected: "
+      puts "NUMERO DE TELEFONO Expected: "+textPhoneNumber
+
+      puts "Actual:"
+      puts "NUMERO DE TELEFONO  Actual: "+phoneXPATH
+  end
+  if (cityOfResidenceXPATH != textCityOfResidence) 
+      raise "Validation for user city of Residence: Failed"    
+      puts "Expected: "
+      puts "CIUDAD DE RESIDENCIA Expected: "+textCityOfResidence
+
+      puts "Actual:"
+      puts "CIUDAD DE RESIDENCIA Actual: "+cityOfResidenceXPATH
+  end
+  if (countryOfResidenceXPATH != textCountryOfResidence) 
+      raise "Validation for user country of Residence: Failed"    
+      puts "Expected: "
+      puts "PAIS DE RESIDENCIA Expected: "+textCountryOfResidence
+
+      puts "Actual:"
+      puts "PAIS DE RESIDENCIA Actual: "+countryOfResidenceXPATH
+  end
+  if (emergencyContactNamePATH != textEmergencyContactName)
+      raise "Validation for user emergencyContactName: Failed"    
+      puts "Expected: "
+      puts "CONTACTO DE EMERGENCIA Expected: "+textEmergencyContactName
+
+      puts "Actual:"
+      puts "CONTACTO DE EMERGENCIA Actual: "+emergencyContactNamePATH
+  end
+  if (relationshipToEmergencyContactPATH != textRelationshipToEmergencyContact)
+      raise "Validation for user relationshipToEmergencyContact: Failed"    
+      puts "Expected: "
+      puts "RELACION DE EMERGENCIA Expected: "+textRelationshipToEmergencyContact
+
+      puts "Actual:"
+      puts "RELACION DE EMERGENCIA Actual: "+relationshipToEmergencyContactPATH
+  end
+  if (emergencyContactNumberPATH != textEmergencyContactNumber)
+      raise "Validation for user emergencyContactNumber: Failed"    
+      puts "Expected: "
+      puts "NUMERO DE CONTACTO DE EMERGENCIA Expected: "+textEmergencyContactNumber
+
+      puts "Actual:"
+      puts "NUMERO DE CONTACTO DE EMERGENCIA DE EMERGENCIA Actual: "+emergencyContactNumberPATH
+  end
+  if(interestsPATH != textInterests)
+    raise "Validation for user interests: Failed"    
+    puts "Expected: "
+    puts "INTERESES Expected: "+textInterests
+
+    puts "Actual:"
+    puts "INTERESES Actual: "+interestsPATH
+  
+  end
+  if(qualitiesPATH != textQualities)
+    raise "Validation for user qualities: Failed"    
+    puts "Expected: "
+    puts "QUALITIES Expected: "+textQualities
+
+    puts "Actual:"
+    puts "QUALITIES Actual: "+qualitiesPATH
+  
+  end
+  if(descriptionXPATH != textdescription)
+    raise "Validation for user description: Failed"    
+    puts "Expected: "
+    puts "DESCRIPTION Expected: "+textdescription
+
+    puts "Actual:"
+    puts "DESCRIPTION Actual: "+descriptionXPATH
+  
   end
 end

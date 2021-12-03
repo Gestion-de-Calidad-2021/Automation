@@ -21,21 +21,22 @@ Scenario Outline:Edit the name, lastname, birthday date, ocupation, profession, 
 Given the "<user>" Jose is logged with the email and password on Start Americas Together homepage
 When the "<user>" Jose click on "Perfil" option
 And the "<user>" Jose click on EDITAR PERFIL
-And the "<user>" Jose will update his name to Pedro
-And the "<user>" Jose will update his lastname to Lopez
-And the "<user>" Jose will update his birthday date to "10/05/1998"
-And the "<user>" Jose will update his ocupation to Universidad
-And the "<user>" Jose will update his profession to Estudiante
-And the "<user>" Jose will update his interests to Educacion
-And the "<user>" Jose will update his qualities to Organizacion
-And the "<user>" Jose will update his country of residence to Colombia
-And the "<user>" Jose will update his city of residence to Bogotá
-And the "<user>" Jose will update his phone number to "5482659"
-And the "<user>" Jose will update his genre to Masculino
-And the "<user>" Jose will update his name of contact emergency to Pepe
-And the "<user>" Jose will update his relationship to emergency contact to amigo
-And the "<user>" Jose will update his number of emergency contact to "45862915"
-And the "<user>" Jose will update his description of the profile to  "<description>"
+And I enter required fields as shown below for Jose user
+  |name:                             | Pedro                |
+  |lastname: 	                       | Lopez                |
+  |birthday:                         | 10/05/1998           |
+  |ocupation: 	                     | Universidad          |
+  |profession:                       | Estudiante           |
+  |interests: 	                     | Educacion            |
+  |qualities:                        | Organizacion         |
+  |country of residence:             | Colombia             |
+  |city of residence:                | Bogotá               |
+  |phone number:                     | 5482659              |
+  |genre:                            | Masculino            |
+  |name of contact emergency:        | Pepe                 |
+  |relationship to emergency contact:| amigo                |
+  |number of emergency contact:      |  45862915            |
+  |description:                      | <description>        |
 And the "<user>" Jose click on GUARDAR
 Then the platform show an alert box
 And the "<user>" Jose click on Aceptar 
