@@ -11,10 +11,11 @@ And the "<user>" will update his name to Juan
 And click on GUARDAR
 Then the "<user>" can see his name updated on the Perfil information with "Juan"
 
-Examples: 
+Examples:
 | user            | description                     |
 | voluntario user | apasionado en ser voluntario    |
 | lider user      | apasionado en organizar eventos |
+
 
 @onlyThis
 Scenario Outline:Edit the name, lastname, birthday date, ocupation, profession, interests, qualities, country of residence, city of residence, phone number, genre, emergency contact name, relationship to emergency contact, emergency contact number and description of the profile        

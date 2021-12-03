@@ -5,7 +5,7 @@ Feature: Delete profile information
   
 Scenario Outline:Delete the profile        
 Given the "<user>" is logged with the email and password on Start Americas Together homepage
-When the "<user>" click on "Perfil" option
+When the "<user>" click on "Perfil" option.
 And click on ELIMINAR PERFIL
 Then the platform show an alert box
 And the "<user>" click on Aceptar 

@@ -13,9 +13,13 @@ Given(/^the "([^"]*)" is logged with the email and password on Start Americas To
     fill_in 'password', :with => ENV['PSW']
     buttonIniciarSesion_xpath='//*[@id="root"]/div/div[2]/div/form/div[3]/button[1]'
     find(:xpath, buttonIniciarSesion_xpath).click
-    sleep 15
+    sleep 3
   end
-  
+
+  When(/^the "([^"]*)" click on "([^"]*)" option.$/)do |typeOfUser, perfilButton|
+    buttonPerfil_xpath='//*[@id="root"]/header/div[2]/div/button[4]'
+    find(:xpath, buttonPerfil_xpath).click
+  end
   
   When(/^click on ELIMINAR PERFIL$/) do
     buttonEliminarPerfil_xpath='//*[@id="simple-tabpanel-0"]/div/span/div/div[1]/div[2]/div/div[2]/button[2]'

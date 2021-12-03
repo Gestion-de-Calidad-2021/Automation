@@ -25,7 +25,7 @@ Then('I shouldnt see the event in the events main page, but can see it in {strin
   find(:xpath, '/html/body/div/div/div[1]/div[2]/button').click
   cardname=find(:xpath, '/html/body/div/div/div[2]/div/div[2]/div[1]/div[2]/div/h4')
   if(cardname.text!=@name)
-    raise cardname+" is not the same of "+@name
+    raise cardname.text + " is not the same of " + @name
   end
   find(:xpath, '/html/body/div/div/div[2]/div/div[2]/div[1]/div[3]/div/button[1]').click
 

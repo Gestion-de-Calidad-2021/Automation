@@ -6,8 +6,8 @@ Given(/^the "([^"]*)" Juan is logged with the email and password on Start Americ
     visit 'https://testing-start.web.app/'
     buttonLogin_xpath='//*[@id="root"]/header/div[1]/button'
     find(:xpath, buttonLogin_xpath).click
-    
-    if(typeOfUser== "voluntario")
+    puts "\n"+"\n"+typeOfUser+"\n"+"\n"
+    if(typeOfUser== "voluntario user")
         fill_in 'email', :with => ENV['VOLUNTARIO_USER']
     elsif(typeOfUser== "lider user")
         fill_in 'email', :with => ENV['LIDER_USER']
@@ -15,7 +15,7 @@ Given(/^the "([^"]*)" Juan is logged with the email and password on Start Americ
     fill_in 'password', :with => ENV['PSW']
     buttonIniciarSesion_xpath='//*[@id="root"]/div/div[2]/div/form/div[3]/button[1]'
     find(:xpath, buttonIniciarSesion_xpath).click
-    sleep 15
+    sleep 3
   end
   
   When(/^the "([^"]*)" click on "([^"]*)" option$/) do |typeOfUser, perfilButton|
@@ -64,7 +64,7 @@ Given(/^the "([^"]*)" Jose is logged with the email and password on Start Americ
   fill_in 'password', :with => ENV['PSW']
   buttonIniciarSesion_xpath='//*[@id="root"]/div/div[2]/div/form/div[3]/button[1]'
   find(:xpath, buttonIniciarSesion_xpath).click
-  sleep 5
+  sleep 3
 end
 
 When(/^the "([^"]*)" Jose click on "([^"]*)" option$/) do |typeOfUser, perfilButton|
@@ -108,14 +108,14 @@ When(/^the "([^"]*)" Jose click on GUARDAR$/) do |user|
 end
 
 Then(/^the platform show an alert box$/) do
-  sleep 3
+  sleep 1
   text = page.driver.browser.switch_to.alert.text
   puts text
   expect(text).to eq 'actualizado correctamente'
 end
 
 When(/^the "([^"]*)" Jose click on Aceptar$/) do |user|
-  sleep 3
+  sleep 1
   page.driver.browser.switch_to.alert.accept
 end
 
@@ -204,7 +204,7 @@ When(/^the "([^"]*)" Jose can see his name, lastname, birthday date, ocupation, 
   textdescription = description
   puts "NOMBRE CONTACTO DE EMERGENCIA  Expected: "+textdescription
 
-  sleep 2
+  sleep 1
   if (userName != textName) 
       raise "Validation for user name: Failed"    
       puts "Expected: "
