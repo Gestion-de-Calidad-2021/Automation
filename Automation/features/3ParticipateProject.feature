@@ -6,6 +6,6 @@ Feature: Participate a project on Start Americas Together
 @maximize
 Scenario Outline: Participate in the first project
 	Given I am logged as a volunteer with the email and password on Start Americas Together homepage
-	When I press the sections of "Proyectos"
-    And I press the button of "Participar"
-    Then I should be participating in Test Event Lider with the option of "Eliminar Participacion"
+	And I press the "Proyectos" section of the main page
+    When I press the "Participar" button a project
+    Then it should show me a confirmation message with the following message "Se registro la participacion con exito" and an OK button
