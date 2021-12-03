@@ -21,7 +21,7 @@ Scenario Outline:Edit the name, lastname, birthday date, ocupation, profession, 
 Given the "<user>" Jose is logged with the email and password on Start Americas Together homepage
 When the "<user>" Jose click on "Perfil" option
 And the "<user>" Jose click on EDITAR PERFIL
-And the "<user>" user enter required fields as shown below
+And the "<user>" Jose enter required fields as shown below
   |name:                             | Pedro                |
   |lastname: 	                       | Lopez                |
   |birthday:                         | 10/05/1998           |

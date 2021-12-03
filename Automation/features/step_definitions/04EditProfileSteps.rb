@@ -7,7 +7,6 @@ Given(/^the "([^"]*)" Juan is logged with the email and password on Start Americ
     buttonLogin_xpath='//*[@id="root"]/header/div[1]/button'
     find(:xpath, buttonLogin_xpath).click
 
-    puts "JUAN USER: "+ typeOfUser
     if(typeOfUser== "voluntario user")
         fill_in 'email', :with => ENV['VOLUNTARIO_USER']
     elsif(typeOfUser== "lider user")
@@ -78,7 +77,7 @@ When(/^the "([^"]*)" Jose click on EDITAR PERFIL$/) do |typeOfUser|
   find(:xpath, buttonEditarPerfil_xpath).click
 end
 
-When(/^the "([^"]*)" user enter required fields as shown below$/) do |typeOfUser,table|
+When(/^the "([^"]*)" Jose enter required fields as shown below$/) do |typeOfUser,table|
   fill_in "nombre", with: ""
   data = table.rows_hash
   fill_in 'nombre', :with => data["name:"]
@@ -230,7 +229,7 @@ When(/^the "([^"]*)" Jose can see his name, lastname, birthday date, ocupation, 
       puts "Actual:"
       puts "OCUPACION Actual: "+ocupacionXPATH
   end
-  if ((carrerXPATH != textProfession) && (phoneXPATH != textPhoneNumber) && (cityOfResidenceXPATH != textCityOfResidence) && (countryOfResidenceXPATH != textCountryOfResidence) && (emergencyContactNamePATH != textEmergencyContactName) && (relationshipToEmergencyContactPATH != textRelationshipToEmergencyContact) && (emergencyContactNumberPATH != textEmergencyContactNumber) && (interestsPATH != textInterests) && (qualitiesPATH != textQualities))
+  if (carrerXPATH != textProfession)
       raise "Validation for user carrer: Failed"    
       puts "Expected: "
       puts "CARRERA Expected: "+textProfession
