@@ -78,7 +78,7 @@ When(/^the "([^"]*)" Jose click on EDITAR PERFIL$/) do |typeOfUser|
   find(:xpath, buttonEditarPerfil_xpath).click
 end
 
-When(/^I enter required fields as shown below for Jose user$/) do |table|
+When(/^the "([^"]*)" user enter required fields as shown below$/) do |typeOfUser,table|
   fill_in "nombre", with: ""
   data = table.rows_hash
   fill_in 'nombre', :with => data["name:"]
