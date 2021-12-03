@@ -19,3 +19,16 @@ Scenario Outline: Create a complete new project in StartApp
     |Objetivo: 	        | Tener el 50% de los perros en un refugio   |
     |Descripcion: 	    | Ayudar a los perros callejeros de la calle |
     |Lider: 	          | Lider-A                                    |
+
+@maximize
+Scenario Outline: Cancel the process of the form create a project
+  Given the leader user logged into the Start Americas Together home page
+  And I press the Projects section button
+  When I press the button to create a new proyect
+  And I input the data for a new project as shown below
+	  |Titulo:  	        | Salvar Perritos                             |
+    |Descripcion: 	    | Ayudar a los perros callejeros de la calle  |
+    |Objetivo: 	        | Tener el 50% de los perros en un refugio    |
+    |Lider:   	        | Lider-A                                     |
+  And click on CANCELAR button
+  Then the number of cards did not increase
