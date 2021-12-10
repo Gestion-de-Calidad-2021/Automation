@@ -12,7 +12,7 @@ When(/^the "([^"]*)" click on Crear Evento Button$/) do |user|
     #find('div/div[1]/div[2]/a[1]').click
     buttonCrearEventos_xpath='//*[@id="root"]/div/div[1]/div[2]/a[1]'
     find(:xpath, buttonCrearEventos_xpath).click
-    sleep 1
+    sleep 2
   end
   
   When(/^the "([^"]*)" enter required fields to create event as shown below$/) do |user, table|
@@ -20,15 +20,15 @@ When(/^the "([^"]*)" click on Crear Evento Button$/) do |user|
     #pending # Write code here that turns the phrase above into concrete actions
     data = table.rows_hash
     fill_in 'nombre_evento', :with => data["name of the event:"]
-
+    sleep 1
     fill_in 'descripcion_evento', :with => data["description:"]
-
+    sleep 1
     fill_in "fecha_evento", with: data["date:"] 
-
+    sleep 1
     select data["mode:"], :from => "modalidad_evento" 
-
+    sleep 1
     fill_in 'lugar_evento', :with => data["site:"]
-
+    sleep 1
   end
   
   When(/^the "([^"]*)" click on Registrar Evento$/) do |user|
@@ -37,7 +37,7 @@ When(/^the "([^"]*)" click on Crear Evento Button$/) do |user|
   end
   
   Then(/^the platform show an alert box in Eventos$/) do
-    sleep 2
+    sleep 5
     text = page.driver.browser.switch_to.alert.text
     puts text
     expect(text).to eq 'Evento Guardado'
@@ -55,6 +55,7 @@ When(/^the "([^"]*)" click on Crear Evento Button$/) do |user|
       eventName = find(:xpath,'//*[@id="root"]/div/div[2]/div/div['+countCardsEvent.to_s+']/div[1]/div[2]/div/h4').text
       #nameE=all('.card-title').last.text
       puts "NOMBRE DEL EVENTO OBTENIDO POR CSS: "+eventName
+      #sleep 3
 
       textName = eventName
       
@@ -92,7 +93,7 @@ When(/^the "([^"]*)" click on Crear Evento Button$/) do |user|
       puts "LUGAR Expected: "+textSite
     
       
-      sleep 1
+      sleep 2
       if (nameOfEvent != textName) 
           raise "Validation for event name: Failed"    
           puts "Expected: "

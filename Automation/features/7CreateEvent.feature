@@ -13,11 +13,11 @@ And the "<user>" enter required fields to create event as shown below
   |description:                      | Evento Académico para los estudiantes de pregrado de la carrera de ingenirería de sistemas |
   |mode:                             | Virtual              |
   |site:                             | https://us02web.zoom.us/j/8982343162669?pwd=Q1V5c0VQODczeU1RSBVASDASDFASDGHSDF01          |
-  |date:                             | 15/02/2022           |
+  |date:                             | 02/12/2022           |
 And the "<user>" click on Registrar Evento
 Then the platform show an alert box in Eventos
 And the "<user>" click on Aceptar Button
-And the "<user>" can see the event "Evento Académico 2021", "Evento Académico para los estudiantes de pregrado de la carrera de ingenirería de sistemas", "Virtual", "https://us02web.zoom.us/j/8982343162669?pwd=Q1V5c0VQODczeU1RSBVASDASDFASDGHSDF01", "15/02/2022" created on "Eventos" option
+And the "<user>" can see the event "Evento Académico 2021", "Evento Académico para los estudiantes de pregrado de la carrera de ingenirería de sistemas", "Virtual", "https://us02web.zoom.us/j/8982343162669?pwd=Q1V5c0VQODczeU1RSBVASDASDFASDGHSDF01", "12/02/2022" created on "Eventos" option
 
 Examples: 
 | user            |
