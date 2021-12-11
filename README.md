@@ -37,11 +37,14 @@ The software that we are testing is a website for Start Americas Together Compan
 
 ➡️  TestLink: [Drive Google: TestLink Test Cases][TestLink_test_Cases]
 
+➡️  Diapositivas Demo: [Diapositivas Google: Demo Final][Diapos]
+
+
 [trello]: https://trello.com/b/ZiDGAeOr/practica-4-calidad
 [Documento_Final]: https://docs.google.com/document/d/1t7hUn332aMYbtg7TDy1YfvYrH8wcKP9IPy8W4d02oz4/edit?usp=sharing
 [Bug_Report]: https://docs.google.com/document/d/1rgRC1BmmqXgA6ILNonM4Sv9vDhK7EWnIub2mZpE01xo/edit?usp=sharing
 [TestLink_test_Cases]: https://drive.google.com/file/d/13lMgcy2bvldE1SLdlOaWmSZhqMVtIAKR/view?usp=sharing
-
+[Diapos]: https://docs.google.com/presentation/d/1V9rfCxbHIsB1p32cygvET2UuW6GLbpOtP6Zu40dM-GM/edit?usp=sharing
 
 ## 5. Bibliography
 
