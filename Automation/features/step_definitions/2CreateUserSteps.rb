@@ -1,5 +1,6 @@
 Given('I am on the main homepage of Start Amercias Together Website') do
     visit 'https://testing-start.web.app/'    
+    sleep(1)
 end
 
 When('I press the login  button ubicated at the right corner') do
@@ -38,7 +39,7 @@ When('I enter the required fields as show below to') do |table|
     end
     sleep(2)
 end
-When('press Crear Cuenta start') do
+When('I press Crear Cuenta start') do
     buttonCrear_xpath='/html/body/div/div/div/div[2]/div[2]/form/div[6]/button/span[1]'
     find(:xpath, buttonCrear_xpath).click   
     sleep (2)
@@ -51,4 +52,11 @@ Then('the user will be created and can login with the next credentials') do |tab
     fill_in 'email', :with => data['Correo electronico:']
     fill_in 'password', :with => data['Contraseña:']
     sleep (2)
+end
+
+Then('phone camp should show me a waring of incorrect phone format') do
+  messageCamp=find(:xpath, '/html/body/div/div/div/div[2]/div[2]/form/div[2]/div[3]/p')
+  if messageCamp.text != "Campo no valido"
+      raise "The phone number should show that the format is incorrect "
+  end
 end
