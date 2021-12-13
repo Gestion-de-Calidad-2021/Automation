@@ -17,3 +17,14 @@ When('I press the button to delete a project {string}') do |string|
         raise "The count should be "+ countCardsBeforeDelete	
     end
   end
+
+Then('it should show me a confirmation message with the message {string} and two buttons to confirm and cancel the action.') do |string|
+  sleep(1)
+  text = page.driver.browser.switch_to.alert.text
+  puts text
+  expect(text).to eq string
+end
+
+Then('I press the button to confirm the action') do
+  pending
+end

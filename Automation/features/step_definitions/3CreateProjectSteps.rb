@@ -141,3 +141,15 @@ Then('the number of cards did not increase') do
     raise "The count should be "+ countCards	
   end
 end
+
+#Scenario #3
+Then('the platform displays an alert box with the message {string}') do |string|
+  sleep(1)
+  text = page.driver.browser.switch_to.alert.text
+  expect(text).to eq string
+end
+
+Then('the leader user click on Aceptar') do
+  sleep(1)
+  page.driver.browser.switch_to.alert.accept
+end

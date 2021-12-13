@@ -32,3 +32,16 @@ Scenario Outline: Cancel the process of the form create a project
     |Lider:   	        | Lider-A                                     |
   And click on CANCELAR button
   Then the number of cards did not increase
+
+@maximize
+Scenario Outline: Create a new project in StartApp without the Objetivo field
+  Given the leader user logged into the Start Americas Together home page
+  And I press the Projects section button
+  When I press the button to create a new proyect
+  And I input the data for a new project as shown below
+	  |Titulo:  	        | Salvar Perritos                             |
+    |Descripcion: 	    | Ayudar a los perros callejeros de la calle  |
+    |Lider:   	        | Lider-A                                     |
+  And click on CREAR button
+  Then the platform displays an alert box with the message "Por favor llene los campos"
+  And the leader user click on Aceptar 
