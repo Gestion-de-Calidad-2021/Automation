@@ -63,3 +63,40 @@ Then('the project is edited according to the following data') do |table|
 end
 sleep(2)
 end
+
+Then('the project is not modified in any of its fields') do |table|
+  dataRes = table.rows_hash
+  dataRes.each_pair do |key, value|
+    case key
+    when "Proyecto:"
+      #//*[@id="root"]/div/div[2]/div[6]/div[2]/p[1]
+      textProyecto = find(:xpath, '//*[@id="root"]/div/div[2]/div[1]/div[2]/p[1]')
+      txt = textProyecto.text.split("Proyecto: ").join("")
+      if txt != value
+        raise "The message should be "+ value
+      end
+      
+    when "Objetivo:"
+      textObjetivo = find(:xpath, '//*[@id="root"]/div/div[2]/div[1]/div[2]/p[2]')
+      txt = textObjetivo.text.split("Objetivo: ").join("")
+      if txt != value
+        raise "The message should be "+ value	
+      end
+
+    when "Descripcion:"
+      textDescripcion = find(:xpath, '//*[@id="root"]/div/div[2]/div[1]/div[2]/p[3]')
+      txt = textDescripcion.text.split("Descripción: ").join("")
+      if txt != value
+        raise "The message should be "+ value	
+      end
+
+    when "Lider:"
+      textLider = find(:xpath, '//*[@id="root"]/div/div[2]/div[1]/div[2]/p[4]')
+      txt = textLider.text.split("Lider: ").join("")
+      if txt != value
+        raise "The message should be "+ value	
+      end
+    end  
+  end
+  sleep(2)
+end
