@@ -9,6 +9,10 @@ Given('I am on the main homepage of Start Americas Together Website.') do
   sleep(2)
 end
 
+Given('I am logged in') do
+  pass
+end
+
 When('I press the sections of {string}.') do |string|
   buttonEventos=find(:xpath, '/html/body/div/header/div[2]/div/button[3]/span[1]')
   buttonEventos.click

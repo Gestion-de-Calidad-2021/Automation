@@ -15,4 +15,3 @@ And the event doesn't exist in the Eventos option
 Examples: 
 | user            |
 | lider user      |
-| coreteam user   |
