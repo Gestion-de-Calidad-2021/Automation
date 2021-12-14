@@ -18,7 +18,7 @@ Examples:
 
 
 @onlyThis
-Scenario Outline:Edit the name, lastname, birthday date, ocupation, profession, interests, qualities, country of residence, city of residence, phone number, genre, emergency contact name, relationship to emergency contact, emergency contact number and description of the profile        
+Scenario Outline:Edit all the profile data     
 Given the "<user>" Jose is logged with the email and password on Start Americas Together homepage
 When the "<user>" Jose click on "Perfil" option
 And the "<user>" Jose click on EDITAR PERFIL
